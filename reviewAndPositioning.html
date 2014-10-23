@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Review and Positioning</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" href="style.css">
+<link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
+<style>
+body {
+  font-family: 'Alegreya', serif;
+}
+
+section {
+  border-bottom: 1px solid black;
+}
+
+.radius {
+  width: 30em;
+  height: 5em;
+  background-color: maroon;
+  color: white;
+  padding: 1em;
+  margin: 1em;
+}
+
+.spaceExample {
+  background-color: maroon;
+  color: white;
+  padding: 1em;
+}
+</style>
+</head>
+<body>
+<section id="usingGFonts">
+	<h1>Using Google Fonts</h1>
+	<p>
+	Remember that, for each Google font you want to use, you must include 2 lines of code in the head section of your page. The first line is a link element that includes the font information from Google's servers. The second is a font-family rule that tells the browser where you want to apply the font on the page. So, to include the font "Alegreya" and use it as the default font for all elements we would need to add this link line before our style section:</p>
+	<p>
+         &lt;link href='http://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'&gt;
+	</p>
+	<p>
+	And then add the following rule to our style section: 
+	</p>
+	<p>
+	body { <br />
+	  font-family: 'Alegreya', serif;<br />
+	}
+	</p>
+	<p>
+	We could also add this line to a seperate style sheet, so long as we linked this seperate stylesheet <em>After</em> linking the Google Stylesheet with the font information. To add another font, say "Bitter" we'd need to add another stylesheet link, and then use the font-family rule to describe where this font should appear!</p>
+</section>
+<section id="borderRadius">
+	<h1>Border Radius</h1>
+	<p> The border-radius property allows you to display boxes with rounded corners. The larger the value you set border-radius to, the larger the circle used to round off the corner, and the more oval-like, and less box-like, your box will become! Set a small value, relative to box size, for a square look. Set a large value, relative to box size, for a more oval look. For example: </p>
+	<div id="radius1" class="radius" style="border-radius:2em">
+	A div 5em high by 30 em wide, with a 2em border radius
+	</div>
+        <div id="radius2" class="radius" style="border-radius:1em" >
+	A div 5em high by 30 em wide, with a 1em border radius
+	</div>
+        <div id="radius3" class="radius" style="border-radius:.5em">
+	A div 5em high by 30 em wide, with a .5em border radius
+	</div>
+	<div id="radius4" class="radius" style="border-radius:2em;width:15em;height:2em">
+	A div 2em high by 15 em wide, with a 2em border radius
+	</div>
+</section>
+<section id="widthMargins">
+	<h1>Width, Margins, and Padding</h1>
+	<p>An element with a width set to a percentage value fills the specified proportion of the width of it's container. For example, the maroon div below is set to 80%  width, and it's container takes up 100% of the page, so it takes up 80% of the full page:</p>
+	<div class="spaceExample" style="width:80%;">
+	This div is taking up 80% of the page. Not very exciting, I know.
+	</div>
+        <p>However, often in web design, we are working in a column or similar element, so our container isn't the whole page. In the example below, the maroon div is contained inside of the larger, column-like, light blue div. The light blue "column" div is set to a width of 50%, and the maroon div is still set to a width of 80%. Notice what happens:</p>
+	<div style="width:50%;background-color:lightblue;height:10em">
+		<div class="spaceExample" style="width:80%;">
+		This div is taking up 80% of its column, that in turn takes up 50% of the page. No margins are set! Notice the space.
+		</div>
+	</div>
+	<p>Applying a margin will then shift the position of the div within its container. For example a left margin of 2em:<p>
+	<div style="width:50%;background-color:lightblue;height:10em">	
+		<div class="spaceExample" style="width:80%;margin-left:2em;">
+		This div is taking up 80% of its column, and it is shifted 2em to the left within that column. Notice the spaces.
+		</div>
+	</div>
+	<p>As it stands, we can't specify a right margin for our maroon div, because that would change the width, and we already set that with "width"! However, we can get rid of the width and set a right margin of 2em to center the maroon div in its column.</p>
+	<div style="width:50%;background-color:lightblue;height:10em">	
+		<div class="spaceExample" style="margin-left:2em;margin-right:2em;">
+		This div does not have a width set. Instead, it has both a left and a right margin.
+		</div>
+	</div>
+        <p>If we just set a single-value margin, rather than a left-margin or right-margin, the margin is applied to all four sides. For example, margin=2em gives us the following (I added a second maroon div to show the bottom margin)</p>
+	<div style="width:50%;background-color:lightblue;height:15em">	
+		<div class="spaceExample" style="margin:2em;">
+		This div has a 2em margin on all four sides. Well, except the top. More on this in a bit.
+		</div>
+		<div class="spaceExample" style="margin:2em;">
+		This div also has a 2em margin on all four sides.
+		</div>
+	</div>
+        <p>As the example above shows, top margins seem to act strangely. The top margin collapses with that of the container, eliminating the desired margin. This is contrary to what our book says. For some reason, you can use the overflow:auto; rule to override this behavior, as below:</p>
+	<div style="width:50%;background-color:lightblue;height:15em;overflow:auto;">	
+		<div class="spaceExample" style="margin:2em;">
+		This div has the 2em margin on all four sides, because the blue container now has overflow:auto set.
+		</div>
+		<div class="spaceExample" style="margin:2em;">
+		This div also has a 2em margin on all four sides.
+		</div>
+	</div>
+	<p>Setting a 2 value margin rule (ie: margin: 2em 1em;) will use the first value for the vertical margin and the second for the horizontal.<p>
+	<div style="width:50%;background-color:lightblue;height:15em;overflow:auto;">	
+		<div class="spaceExample" style="margin:2em 1em;">
+		This div has the 2em vertical margin and 1em horizontal.
+		</div>
+		<div class="spaceExample" style="margin:2em 1em;">
+		This div has the 2em vertical margin and 1em horizontal.
+		</div>
+	</div>
+<p> </p>
+</section>
+
+<section id="floats">
+	<h1>Floats</h1>
+	<p>We can use the float rule to "float" an element to the left or the right, and let other elements wrap around the floated element. For example a div floated to the right:
+	<div class="spaceExample" style="float:right; width:40%">
+	This div is set to a width of 40% and floated to the right.
+	</div>
+	<div style="background-color:lightblue">
+	This div wraps around the floating div. The content of the wrapping div automatically fills the free space around the floating div, just as you see here. I have to make this div long enough to take up the space next to the div, otherwise the floated div would float to the right of the section border at the bottom of the page, and that would look weird. Take some of this text out in the source code and see what I mean, if you don't believe me. Also, note that the floated div has some padding, but no margin.
+	</div>
+<p>Or to the left:</p>
+	<div class="spaceExample" style="float:left; width:40%">
+	This div is set to a width of 40% and floated to the left.
+	</div>
+	<div style="background-color:lightblue">
+	This div wraps around the floating div. The content of the wrapping div automatically fills the free space around the floating div, just as you see here. I have to make this div long enough to take up the space next to the div, otherwise the floated div would float to the right of the section border at the bottom of the page, and that would look weird. Take some of this text out in the source code and see what I mean, if you don't believe me. Also, note that the floated div has some padding, but no margin.
+	</div>
+<p>You must specify a width for a floated text div. Also, floating a div does not change its vertical position on the page. So if you float a div that appears in the source after another div, it won't float "up" into the text of the previous div. See the source code for this example to understand this better.</p>
+	<div style="background-color:lightblue">
+	This div does not wrap around the floating div, which occurs after it in the source. Instead, the poor floating div just hangs out below it. All broken and alone. Poor thing.
+	</div>
+	<div class="spaceExample" style="float:left; width:40%">
+	This div is set to a width of 40% and floated to the left.
+	</div>
+<p style="clear:left">Use the clear rule to stop floating behavior. This paragraph is set to clear:left, otherwise the floating div would appear to the left of it!</p>
+<p>A div will only wrap around a floating div out to its own width. Thus if we set the wrapping div to 80% width and the floating div to 40%, we get this:</p>
+	<div class="spaceExample" style="float:right; width:40%">
+	This div is set to a width of 40% and floated to the right.
+	</div>
+	<div style="background-color:lightblue;width:80%;">
+	This div wraps around the floating div, out to its own width of 80%. The content of the wrapping div automatically fills the free space around the floating div, just as you see here. I have to make this div long enough to take up the space next to the div, otherwise the floated div would float to the right of the section border at the bottom of the page, and that would look weird. Take some of this text out in the source code and see what I mean, if you don't believe me. Also, note that the floated div has some padding, but no margin.
+	</div>
+<p>This can become important, because we often use float to create whole floating columns. However, if your bottom column is the same size or smaller than the top one, and the top column is floated to the left the bottom column won't wrap around the top!</p>
+<div class="spaceExample" style="float:left; width:40%">
+	This div is set to a width of 40% and floated to the left.
+	</div>
+	<div style="background-color:lightblue;width:40%;">
+	This div also has a width of 40%, so nothing wraps! Instead, the columns just stack. Tres boring, don't you think. Not the behavior we want.
+	</div>
+<p>We can float <em>both</em> columns left to get the desired result. Floating both columns tells the browser to move each column as far to the left as possible.</p>
+<div class="spaceExample" style="float:left; width:40%">
+	This div is set to a width of 40% and floated to the left.
+	</div>
+	<div style="background-color:lightblue;width:40%; float:left; padding:1em;">
+	This div also has a width of 40%, and now it is also floated left, so it moves up the page to fill the space left empty by our other floating column. The behavior we want! I've also added some padding to the column for readability. Note how this has changed the size of the div!
+	</div>
+<p style="clear:left;">Just to review, here is what happens if we add a 2em horizontal margin (margin: 0 2em;) to our left-most column.</p>
+<div class="spaceExample" style="float:left; width:40%;margin:0 2em;">
+	This div is set to a width of 40% and floated to the left. It also has a 2em horizontal margin.
+	</div>
+	<div style="background-color:lightblue;width:40%; float:left; padding:1em;">
+	This div also has a width of 40%, and now it is also floated left, so it moves up the page to fill the space left empty by our other floating column. The behavior we want! I've also added some padding to the column for readability. Note how this has changed the size of the div!
+	</div>
+<p style="clear:left">Ok! That's floats! Let's try this all out!</p>
+</section>
+</body>
+</html>	
